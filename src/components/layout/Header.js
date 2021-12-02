@@ -12,7 +12,7 @@ import {
 const Header = () => {
     return (
         <header>
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="dark" variant="dark" expand="lg">
                 <Container fluid>
                     <Navbar.Brand href="/">GTD</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
