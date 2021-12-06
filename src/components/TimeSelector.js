@@ -10,7 +10,7 @@ const TimeSelector = () => {
 
     return (
         <DropdownButton
-            className="my-3"
+            className="mt-3"
             title={<FaClock />}
             variant="secondary"
             onSelect={handleSelect}
