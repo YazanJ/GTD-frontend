@@ -5,7 +5,7 @@ import EnergySelector from "./EnergySelector";
 import DateSelector from "./DateSelector.js";
 import StateSelector from "./StateSelector";
 
-const CreateAction = () => {
+const CreateAction = ({ setNewItem }) => {
     return (
         <Card className="mt-5">
             <Card.Body>
@@ -37,7 +37,11 @@ const CreateAction = () => {
                     </Col>
                 </Row>
                 <Button variant="dark">Save Changes</Button>
-                <Button className="mx-2" variant="dark">
+                <Button
+                    className="mx-2"
+                    variant="dark"
+                    onClick={() => setNewItem(false)}
+                >
                     Cancel
                 </Button>
             </Card.Body>
