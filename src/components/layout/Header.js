@@ -8,13 +8,16 @@ import {
     Button,
     Container,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
         <header>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="dark" variant="dark" expand="lg" id="nav">
                 <Container fluid>
-                    <Navbar.Brand href="/">GTD</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/">
+                        GTD
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
