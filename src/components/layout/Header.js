@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ setNewItem }) => {
     return (
         <header>
             <Navbar bg="dark" variant="dark" expand="lg" id="nav">
@@ -40,7 +40,9 @@ const Header = () => {
                                     Something else here
                                 </NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="#action2">New Item</Nav.Link>
+                            <Nav.Link onClick={() => setNewItem(true)}>
+                                New Item
+                            </Nav.Link>
                         </Nav>
                         <Form className="d-flex">
                             <FormControl
