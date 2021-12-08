@@ -1,7 +1,9 @@
 import React from "react";
-import { Card, Form, Row, Col } from "react-bootstrap";
-
+import { Card, Form, Row, Col, Button } from "react-bootstrap";
 import TimeSelector from "./TimeSelector.js";
+import EnergySelector from "./EnergySelector";
+import DateSelector from "./DateSelector.js";
+import StateSelector from "./StateSelector";
 
 const CreateAction = () => {
     return (
@@ -22,15 +24,22 @@ const CreateAction = () => {
                             <Form.Control
                                 className="my-3"
                                 as="textarea"
-                                rows={4}
+                                rows={5}
                                 placeholder="Notes"
                             ></Form.Control>
                         </Form>
                     </Col>
                     <Col md={4}>
                         <TimeSelector />
+                        <EnergySelector />
+                        <DateSelector />
+                        <StateSelector />
                     </Col>
                 </Row>
+                <Button variant="dark">Save Changes</Button>
+                <Button className="mx-2" variant="dark">
+                    Cancel
+                </Button>
             </Card.Body>
         </Card>
     );
