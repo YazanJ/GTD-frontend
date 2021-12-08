@@ -1,12 +1,9 @@
 import React from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { states } from "../constants/actionConstants";
+import { capitaliseFirstLetter } from "../helpers";
 
 const StateSelector = () => {
-    const capitaliseFirstLetter = (word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-    };
-
     const handleSelect = (e) => {
         console.log(e);
     };
