@@ -1,13 +1,24 @@
+import React, { useState, useEffect } from "react";
 import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
 import { Container } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainScreen from "./screens/MainScreen";
 import { Row, Col } from "react-bootstrap";
+import { getActions } from "./api";
 
 const App = () => {
+    const [actions, setActions] = useState([]);
+
+    useEffect(() => {
+        getActions()
+            .then((data) => {
+                setActions(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+
     return (
-        <Router>
+        <Container>
             <Header />
             <Row>
                 <Col md={3}>
@@ -15,19 +26,11 @@ const App = () => {
                 </Col>
                 <Col md={9}>
                     <main className="py-1">
-                        <Container>
-                            <Routes>
-                                <Route path="/" element={<MainScreen />} />
-                                <Route
-                                    path="/actions/:state/"
-                                    element={<MainScreen />}
-                                />
-                            </Routes>
-                        </Container>
+                        <MainScreen actions={actions} />
                     </main>
                 </Col>
             </Row>
-        </Router>
+        </Container>
     );
 };
 
