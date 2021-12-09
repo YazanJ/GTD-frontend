@@ -4,11 +4,12 @@ import Sidebar from "./components/layout/Sidebar";
 import { Container } from "react-bootstrap";
 import MainScreen from "./screens/MainScreen";
 import { Row, Col } from "react-bootstrap";
-import { getActions } from "./api";
+import { getActions, getProjects } from "./api";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
     const [actions, setActions] = useState([]);
+    const [projects, setProjects] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [newItem, setNewItem] = useState(false);
 
@@ -24,13 +25,22 @@ const App = () => {
     useEffect(() => {
         getActions()
             .then((data) => {
-                console.log(data);
+                // console.log("DATA", data);
                 setActions(data);
+            })
+            .catch((error) => {
+                console.log("ERROR", error);
+            });
+        // getActions().then(successCallback, failureCallback);
+
+        getProjects()
+            .then((data) => {
+                // console.log(data);
+                setProjects(data);
             })
             .catch((error) => {
                 console.log(error);
             });
-        // getActions().then(successCallback, failureCallback);
     }, []);
 
     return (
@@ -38,7 +48,10 @@ const App = () => {
             <Header setNewItem={setNewItem} />
             <Row>
                 <Col md={3}>
-                    <Sidebar className="min-vh-100"></Sidebar>
+                    <Sidebar
+                        className="min-vh-100"
+                        projects={projects}
+                    ></Sidebar>
                 </Col>
                 <Col md={9}>
                     <main className="py-1">
