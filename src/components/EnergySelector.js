@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { FaGenderless } from "react-icons/fa";
 
 const EnergySelector = () => {
+    const [energy, setEnergy] = useState("");
+
     const handleSelect = (e) => {
-        console.log(e);
+        setEnergy(e);
     };
 
     return (
         <DropdownButton
             className="mt-1"
-            title="energy"
+            title={energy.length ? energy : "energy"}
             variant="secondary"
             onSelect={handleSelect}
         >

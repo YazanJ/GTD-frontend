@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { timeOptions } from "../constants/actionConstants";
 import { FaClock } from "react-icons/fa";
 
 const TimeSelector = () => {
-    const handleSelect = (time) => {
-        console.log(time);
+    const [time, setTime] = useState("");
+    const handleSelect = (e) => {
+        setTime(e);
     };
 
     return (
         <DropdownButton
             className="mt-3"
-            title={<FaClock />}
+            title={time.length ? time : <FaClock />}
             variant="secondary"
             onSelect={handleSelect}
         >
