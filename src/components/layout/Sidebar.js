@@ -9,7 +9,7 @@ import {
 import "react-pro-sidebar/dist/css/styles.css";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ projects }) => {
+const Sidebar = ({ projects, tags }) => {
     return (
         <ProSidebar className="100-vh">
             <Menu>
@@ -49,10 +49,12 @@ const Sidebar = ({ projects }) => {
                     ))}
                 </SubMenu>
                 <SubMenu title="TAGS" defaultOpen={true}>
-                    <MenuItem>
-                        tag_name
-                        <Link to="/tag/:tag_id/" />
-                    </MenuItem>
+                    {tags.map((tag) => (
+                        <MenuItem key={tag.id}>
+                            {tag.name}
+                            <Link to={`/tags/${tag.id}/`} />
+                        </MenuItem>
+                    ))}
                 </SubMenu>
             </Menu>
             {/* <SidebarFooter>Footer</SidebarFooter> */}

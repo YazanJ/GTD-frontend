@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
-import { Container } from "react-bootstrap";
 import MainScreen from "./screens/MainScreen";
 import { Row, Col } from "react-bootstrap";
-import { getActions, getProjects } from "./api";
+import { getActions, getProjects, getTags } from "./api";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
     const [actions, setActions] = useState([]);
     const [projects, setProjects] = useState([]);
+    const [tags, setTags] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [newItem, setNewItem] = useState(false);
-
-    // const successCallback = (data) => {
-    //     setActions(data);
-    // };
-
-    // const failureCallback = (error) => {
-    //     console.log("ERRORHERE");
-    //     setErrorMessage(error);
-    // };
 
     useEffect(() => {
         getActions()
@@ -41,6 +32,10 @@ const App = () => {
             .catch((error) => {
                 console.log(error);
             });
+
+        getTags().then((data) => {
+            setTags(data);
+        });
     }, []);
 
     return (
@@ -51,6 +46,7 @@ const App = () => {
                     <Sidebar
                         className="min-vh-100"
                         projects={projects}
+                        tags={tags}
                     ></Sidebar>
                 </Col>
                 <Col md={9}>

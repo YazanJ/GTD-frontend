@@ -20,3 +20,12 @@ export const getProjects = async () => {
         return error.message;
     }
 };
+
+export const getTags = async () => {
+    try {
+        const { data } = await axios.get(`${HOSTNAME}/api/users/tags/`);
+        return data;
+    } catch (error) {
+        return error.message;
+    }
+};
