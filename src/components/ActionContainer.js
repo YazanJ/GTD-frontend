@@ -1,31 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { getActions } from "../api";
 // import { states } from "../constants/ActionConstants";
 import ActionRow from "./ActionRow";
 import CreateAction from "./CreateAction";
+import { useParams } from "react-router-dom";
+import { capitaliseFirstLetter } from "../helpers";
 
-const ActionContainer = ({ actions }) => {
-    // const [actions, setActions] = useState([]);
+const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
+    const { state } = useParams();
 
-    // useEffect(() => {
-    //     getActions()
-    //         .then((data) => {
-    //             setActions(data);
-    //         })
-    //         .catch((error) => console.log(error));
-    // }, []);
+    if (all) {
+        return (
+            <div>
+                <b>Actions</b>
+                {actions.map((action) => (
+                    <div key={action.id}>
+                        <ActionRow action={action} />
+                    </div>
+                ))}
+                {newItem && <CreateAction setNewItem={setNewItem} />}
+            </div>
+        );
+    }
 
-    // console.log(actions);
+    if (state === "focused") {
+        const focusedActions = actions.filter(
+            (action) => action.is_focused == true
+        );
+        return (
+            <div>
+                <b>Focused</b>
+                {focusedActions.map((action) => (
+                    <div key={action.id}>
+                        <ActionRow action={action} />
+                    </div>
+                ))}
+                {newItem && <CreateAction setNewItem={setNewItem} />}
+            </div>
+        );
+    }
 
+    const stateActions = actions.filter((action) => action.state === state);
     return (
         <div>
-            <b>actions</b>
-            {actions.map((action) => (
-                <div key={action.id}>
-                    <ActionRow action={action} />
-                </div>
-            ))}
-            <CreateAction />
+            <b>{capitaliseFirstLetter(state)}</b>
+            {stateActions.length ? (
+                stateActions.map((action) => (
+                    <div key={action.id}>
+                        <ActionRow action={action} />
+                    </div>
+                ))
+            ) : (
+                <div>No actions</div>
+            )}
+            {newItem && <CreateAction setNewItem={setNewItem} />}
         </div>
     );
 };
