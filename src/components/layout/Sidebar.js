@@ -9,17 +9,19 @@ import {
 import "react-pro-sidebar/dist/css/styles.css";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ projects }) => {
     return (
         <ProSidebar className="100-vh">
             <Menu>
-                <SubMenu title="CAPTURE">
-                    <MenuItem>
-                        Inbox
-                        <Link to="/actions/inbox/" />
-                    </MenuItem>
-                </SubMenu>
-                <SubMenu title="ACTIONS">
+                <MenuItem>
+                    Focused
+                    <Link to="actions/focused/" />
+                </MenuItem>
+                <MenuItem>
+                    Inbox
+                    <Link to="/actions/inbox/" />
+                </MenuItem>
+                <SubMenu title="ACTIONS" defaultOpen={true}>
                     <MenuItem>
                         Next
                         <Link to="/actions/next/" />
@@ -37,18 +39,16 @@ const Sidebar = () => {
                         <Link to="/actions/someday/" />
                     </MenuItem>
                 </SubMenu>
-                <MenuItem>
-                    Focus
-                    <Link to="actions/focused/" />
-                </MenuItem>
-                <SubMenu as={Link} title="PROJECTS">
+                <SubMenu as={Link} title="PROJECTS" defaultOpen={true}>
                     <Link to="projects/" />
-                    <MenuItem>
-                        Project_name
-                        <Link to="/projects/:project_id/" />
-                    </MenuItem>
+                    {projects.map((project) => (
+                        <MenuItem key={project.id}>
+                            {project.name}
+                            <Link to={`/projects/${project.id}/`} />
+                        </MenuItem>
+                    ))}
                 </SubMenu>
-                <SubMenu title="TAGS">
+                <SubMenu title="TAGS" defaultOpen={true}>
                     <MenuItem>
                         tag_name
                         <Link to="/tag/:tag_id/" />
