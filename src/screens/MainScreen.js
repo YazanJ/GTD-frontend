@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ActionContainer from "../components/ActionContainer";
-import { useParams } from "react-router-dom";
-import { states } from "../constants/actionConstants";
-import { getActions, getStateActions, getFocusedActions } from "../api";
+import { Routes, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
-const MainScreen = () => {
-    // const [isFocus, setIsFocus] = useState(false)
-    // const [isActions, setIsActions] = useState(false)
-    // const [isProject]
-    const [actions, setActions] = useState([]);
-    const { state } = useParams();
-
-    useEffect(() => {
-        if (states.includes(state)) {
-            getStateActions(state)
-                .then((data) => {
-                    setActions(data);
-                })
-                .catch((error) => console.log(error));
-        } else if (state === "focused") {
-            getFocusedActions()
-                .then((data) => {
-                    setActions(data);
-                })
-                .catch((error) => console.log(error));
-        }
-    }, [state]);
-
+const MainScreen = ({ actions, newItem, setNewItem }) => {
     return (
-        <div>
-            <ActionContainer actions={actions} />
-        </div>
+        <Container>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <ActionContainer
+                            actions={actions}
+                            all={true}
+                            newItem={newItem}
+                            setNewItem={setNewItem}
+                        />
+                    }
+                />
+                <Route
+                    path="/actions/:state"
+                    element={
+                        <ActionContainer
+                            actions={actions}
+                            all={false}
+                            newItem={newItem}
+                            setNewItem={setNewItem}
+                        />
+                    }
+                />
+            </Routes>
+        </Container>
     );
 };
 
