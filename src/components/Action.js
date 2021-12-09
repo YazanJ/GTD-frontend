@@ -5,7 +5,7 @@ import EnergySelector from "./EnergySelector";
 import DateSelector from "./DateSelector.js";
 import StateSelector from "./StateSelector";
 
-const CreateAction = ({ setNewItem }) => {
+const Action = ({ setNewItem }) => {
     return (
         <Card className="mt-5">
             <Card.Body>
@@ -49,4 +49,4 @@ const CreateAction = ({ setNewItem }) => {
     );
 };
 
-export default CreateAction;
+export default Action;

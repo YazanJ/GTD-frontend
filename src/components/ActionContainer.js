@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { states } from "../constants/ActionConstants";
 import ActionRow from "./ActionRow";
-import CreateAction from "./CreateAction";
+import Action from "./Action";
 import { useParams } from "react-router-dom";
 import { capitaliseFirstLetter } from "../helpers";
 
@@ -17,7 +17,7 @@ const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
                         <ActionRow action={action} />
                     </div>
                 ))}
-                {newItem && <CreateAction setNewItem={setNewItem} />}
+                {newItem && <Action setNewItem={setNewItem} />}
             </div>
         );
     }
@@ -34,7 +34,7 @@ const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
                         <ActionRow action={action} />
                     </div>
                 ))}
-                {newItem && <CreateAction setNewItem={setNewItem} />}
+                {newItem && <Action setNewItem={setNewItem} />}
             </div>
         );
     }
@@ -52,7 +52,7 @@ const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
             ) : (
                 <div>No actions</div>
             )}
-            {newItem && <CreateAction setNewItem={setNewItem} />}
+            {newItem && <Action setNewItem={setNewItem} />}
         </div>
     );
 };
