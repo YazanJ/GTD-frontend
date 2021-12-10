@@ -21,7 +21,7 @@ const Sidebar = ({ projects, tags }) => {
                     Inbox
                     <Link to="/actions/inbox/" />
                 </MenuItem>
-                <SubMenu title="ACTIONS" defaultOpen={true}>
+                <SubMenu title="ACTIONS">
                     <MenuItem>
                         Next
                         <Link to="/actions/next/" />
@@ -39,7 +39,7 @@ const Sidebar = ({ projects, tags }) => {
                         <Link to="/actions/someday/" />
                     </MenuItem>
                 </SubMenu>
-                <SubMenu as={Link} title="PROJECTS" defaultOpen={true}>
+                <SubMenu as={Link} title="PROJECTS">
                     <Link to="projects/" />
                     {projects.map((project) => (
                         <MenuItem key={project.id}>
@@ -48,7 +48,7 @@ const Sidebar = ({ projects, tags }) => {
                         </MenuItem>
                     ))}
                 </SubMenu>
-                <SubMenu title="TAGS" defaultOpen={true}>
+                <SubMenu title="TAGS">
                     {tags.map((tag) => (
                         <MenuItem key={tag.id}>
                             {tag.name}
