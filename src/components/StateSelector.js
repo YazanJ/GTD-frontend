@@ -3,18 +3,13 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 import { states } from "../constants/actionConstants";
 import { capitalise } from "../helpers";
 
-const StateSelector = () => {
-    const [state, setState] = useState("");
-    const handleSelect = (e) => {
-        setState(e);
-    };
-
+const StateSelector = ({ state, setState }) => {
     return (
         <DropdownButton
             className="mt-3"
             title={state.length ? state : "State"}
             variant="secondary"
-            onSelect={handleSelect}
+            onSelect={setState}
         >
             {states.map((state) => (
                 <Dropdown.Item key={state} eventKey={state}>

@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 
-const ProjectSelector = ({ projects }) => {
-    const [project, setProject] = useState("");
-    const handleSelect = (e) => {
-        setProject(e);
-    };
+const ProjectSelector = ({ project, setProject, projects }) => {
     return (
         <DropdownButton
             className="mt-1"
             title={project.length ? project : "Standalone"}
             variant="secondary"
-            onSelect={handleSelect}
+            onSelect={setProject}
         >
             {projects.map((project) => (
                 <Dropdown.Item key={project.id} eventKey={project.name}>

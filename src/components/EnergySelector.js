@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { FaGenderless } from "react-icons/fa";
 
-const EnergySelector = () => {
-    const [energy, setEnergy] = useState("");
-
-    const handleSelect = (e) => {
-        setEnergy(e);
-    };
-
+const EnergySelector = ({ energy, setEnergy }) => {
     return (
         <DropdownButton
             className="mt-1"
             title={energy.length ? energy : "Energy"}
             variant="secondary"
-            onSelect={handleSelect}
+            onSelect={setEnergy}
         >
             <Dropdown.Item eventKey={"Low"}>
                 <FaGenderless />
@@ -32,7 +26,7 @@ const EnergySelector = () => {
                 High
             </Dropdown.Item>
             <hr />
-            <Dropdown.Item eventKey={"none"}>None</Dropdown.Item>
+            <Dropdown.Item eventKey={"None"}>None</Dropdown.Item>
         </DropdownButton>
     );
 };

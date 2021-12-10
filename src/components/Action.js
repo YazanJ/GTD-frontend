@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Form, Row, Col, Button } from "react-bootstrap";
 import TimeSelector from "./TimeSelector.js";
 import EnergySelector from "./EnergySelector";
@@ -7,6 +7,12 @@ import StateSelector from "./StateSelector";
 import ProjectSelector from "./ProjectSelector";
 
 const Action = ({ setNewItem, projects }) => {
+    const [date, setDate] = useState("");
+    const [energy, setEnergy] = useState("");
+    const [time, setTime] = useState("");
+    const [state, setState] = useState("");
+    const [project, setProject] = useState("");
+
     return (
         <Card className="mt-5">
             <Card.Body>
@@ -31,11 +37,15 @@ const Action = ({ setNewItem, projects }) => {
                         </Form>
                     </Col>
                     <Col md={4}>
-                        <TimeSelector />
-                        <EnergySelector />
-                        <DateSelector />
-                        <StateSelector />
-                        <ProjectSelector projects={projects} />
+                        <TimeSelector time={time} setTime={setTime} />
+                        <EnergySelector energy={energy} setEnergy={setEnergy} />
+                        <DateSelector date={date} setDate={setDate} />
+                        <StateSelector state={state} setState={setState} />
+                        <ProjectSelector
+                            project={project}
+                            setProject={setProject}
+                            projects={projects}
+                        />
                     </Col>
                 </Row>
                 <Button variant="dark">Save Changes</Button>

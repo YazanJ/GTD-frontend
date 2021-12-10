@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { DropdownButton, Form } from "react-bootstrap";
 
-const DateSelector = () => {
-    const [date, setDate] = useState("");
-    const handleSelect = (e) => {
-        setDate(e);
-    };
-
+const DateSelector = ({ date, setDate }) => {
     return (
         <DropdownButton
             className="mt-1"
@@ -15,7 +10,7 @@ const DateSelector = () => {
         >
             <Form.Control
                 type="date"
-                onChange={(e) => handleSelect(e.target.value)}
+                onChange={(e) => setDate(e.target.value)}
             />
         </DropdownButton>
     );
