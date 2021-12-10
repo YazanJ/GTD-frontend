@@ -4,8 +4,10 @@ import TimeSelector from "./TimeSelector.js";
 import EnergySelector from "./EnergySelector";
 import DateSelector from "./DateSelector.js";
 import StateSelector from "./StateSelector";
+import ProjectSelector from "./ProjectSelector";
 
 const Action = ({ setNewItem }) => {
+    const projects = [];
     return (
         <Card className="mt-5">
             <Card.Body>
@@ -34,6 +36,7 @@ const Action = ({ setNewItem }) => {
                         <EnergySelector />
                         <DateSelector />
                         <StateSelector />
+                        <ProjectSelector projects={projects} />
                     </Col>
                 </Row>
                 <Button variant="dark">Save Changes</Button>
