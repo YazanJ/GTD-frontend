@@ -3,7 +3,7 @@ import ActionContainer from "../components/ActionContainer";
 import { Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
-const MainScreen = ({ actions, newItem, setNewItem }) => {
+const MainScreen = ({ actions, projects, newItem, setNewItem }) => {
     return (
         <Container>
             <Routes>
@@ -13,6 +13,7 @@ const MainScreen = ({ actions, newItem, setNewItem }) => {
                         <ActionContainer
                             actions={actions}
                             all={true}
+                            projects={projects}
                             newItem={newItem}
                             setNewItem={setNewItem}
                         />
@@ -24,6 +25,7 @@ const MainScreen = ({ actions, newItem, setNewItem }) => {
                         <ActionContainer
                             actions={actions}
                             all={false}
+                            projects={projects}
                             newItem={newItem}
                             setNewItem={setNewItem}
                         />

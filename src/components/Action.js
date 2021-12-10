@@ -6,8 +6,7 @@ import DateSelector from "./DateSelector.js";
 import StateSelector from "./StateSelector";
 import ProjectSelector from "./ProjectSelector";
 
-const Action = ({ setNewItem }) => {
-    const projects = [];
+const Action = ({ setNewItem, projects }) => {
     return (
         <Card className="mt-5">
             <Card.Body>

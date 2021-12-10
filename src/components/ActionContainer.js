@@ -5,7 +5,7 @@ import Action from "./Action";
 import { useParams } from "react-router-dom";
 import { capitaliseFirstLetter } from "../helpers";
 
-const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
+const ActionContainer = ({ actions, projects, all, newItem, setNewItem }) => {
     const { state } = useParams();
 
     if (all) {
@@ -17,7 +17,9 @@ const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
                         <ActionRow action={action} />
                     </div>
                 ))}
-                {newItem && <Action setNewItem={setNewItem} />}
+                {newItem && (
+                    <Action setNewItem={setNewItem} projects={projects} />
+                )}
             </div>
         );
     }
@@ -34,7 +36,9 @@ const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
                         <ActionRow action={action} />
                     </div>
                 ))}
-                {newItem && <Action setNewItem={setNewItem} />}
+                {newItem && (
+                    <Action setNewItem={setNewItem} projects={projects} />
+                )}
             </div>
         );
     }
@@ -52,7 +56,7 @@ const ActionContainer = ({ actions, all, newItem, setNewItem }) => {
             ) : (
                 <div>No actions</div>
             )}
-            {newItem && <Action setNewItem={setNewItem} />}
+            {newItem && <Action setNewItem={setNewItem} projects={projects} />}
         </div>
     );
 };

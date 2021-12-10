@@ -56,6 +56,7 @@ const App = () => {
                         ) : (
                             <MainScreen
                                 actions={actions}
+                                projects={projects}
                                 newItem={newItem}
                                 setNewItem={setNewItem}
                             />
