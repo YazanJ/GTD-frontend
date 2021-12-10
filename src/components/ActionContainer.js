@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ActionRow from "./ActionRow";
 import Action from "./Action";
 import { useParams } from "react-router-dom";
-import { capitaliseFirstLetter } from "../helpers";
+import { capitalise } from "../helpers";
 
 const ActionContainer = ({ actions, projects, all, newItem, setNewItem }) => {
     const { state } = useParams();
@@ -46,7 +46,7 @@ const ActionContainer = ({ actions, projects, all, newItem, setNewItem }) => {
     const stateActions = actions.filter((action) => action.state === state);
     return (
         <div>
-            <b>{capitaliseFirstLetter(state)}</b>
+            <b>{state}</b>
             {stateActions.length ? (
                 stateActions.map((action) => (
                     <div key={action.id}>

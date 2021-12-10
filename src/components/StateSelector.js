@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { states } from "../constants/actionConstants";
-import { capitaliseFirstLetter } from "../helpers";
+import { capitalise } from "../helpers";
 
 const StateSelector = () => {
     const [state, setState] = useState("");
@@ -12,7 +12,7 @@ const StateSelector = () => {
     return (
         <DropdownButton
             className="mt-3"
-            title={state.length ? state : "state"}
+            title={state.length ? state : "State"}
             variant="secondary"
             onSelect={handleSelect}
         >

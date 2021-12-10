@@ -12,27 +12,27 @@ const EnergySelector = () => {
     return (
         <DropdownButton
             className="mt-1"
-            title={energy.length ? energy : "energy"}
+            title={energy.length ? energy : "Energy"}
             variant="secondary"
             onSelect={handleSelect}
         >
-            <Dropdown.Item eventKey={"low"}>
+            <Dropdown.Item eventKey={"Low"}>
                 <FaGenderless />
-                low
+                Low
             </Dropdown.Item>
-            <Dropdown.Item eventKey={"med"}>
+            <Dropdown.Item eventKey={"Med"}>
                 <FaGenderless />
                 <FaGenderless />
-                med
+                Med
             </Dropdown.Item>
-            <Dropdown.Item eventKey={"high"}>
+            <Dropdown.Item eventKey={"High"}>
                 <FaGenderless />
                 <FaGenderless />
                 <FaGenderless />
-                high
+                High
             </Dropdown.Item>
             <hr />
-            <Dropdown.Item eventKey={"none"}>none</Dropdown.Item>
+            <Dropdown.Item eventKey={"none"}>None</Dropdown.Item>
         </DropdownButton>
     );
 };

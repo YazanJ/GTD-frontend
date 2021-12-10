@@ -10,7 +10,7 @@ const DateSelector = () => {
     return (
         <DropdownButton
             className="mt-1"
-            title={date.length ? date : "due"}
+            title={date.length ? date : "Due"}
             variant="secondary"
         >
             <Form.Control

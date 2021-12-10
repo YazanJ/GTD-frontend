@@ -9,7 +9,7 @@ const ProjectSelector = ({ projects }) => {
     return (
         <DropdownButton
             className="mt-1"
-            title={project.length ? project : "standalone"}
+            title={project.length ? project : "Standalone"}
             variant="secondary"
             onSelect={handleSelect}
         >

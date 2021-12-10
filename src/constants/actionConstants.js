@@ -1,4 +1,4 @@
-export const states = ["inbox", "next", "waiting", "scheduled", "someday"];
+export const states = ["Inbox", "Next", "Waiting", "Scheduled", "Someday"];
 export const timeOptions = [
     "5 minutes",
     "10 minutes",
