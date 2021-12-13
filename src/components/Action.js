@@ -6,10 +6,13 @@ import DateSelector from "./DateSelector.js";
 import StateSelector from "./StateSelector";
 import ProjectSelector from "./ProjectSelector";
 
-const Action = ({ setNewItem, projects }) => {
-    const [date, setDate] = useState("");
-    const [energy, setEnergy] = useState("");
+const Action = ({ setNewItem, tags, projects }) => {
+    const [todo, setTodo] = useState("");
+    const [tag, setTag] = useState("");
+    const [note, setNote] = useState("");
     const [time, setTime] = useState("");
+    const [energy, setEnergy] = useState("");
+    const [date, setDate] = useState("");
     const [state, setState] = useState("");
     const [project, setProject] = useState("");
 
@@ -21,18 +24,25 @@ const Action = ({ setNewItem, projects }) => {
                         <Form>
                             <Form.Control
                                 className="my-3"
-                                type="email"
                                 placeholder="To Do"
+                                onChange={(e) => setTodo(e.target.value)}
                             ></Form.Control>
-                            <Form.Control
+                            <Form.Select
                                 className="my-3"
-                                placeholder="Tags (areas, contacts, labels)"
-                            ></Form.Control>
+                                aria-label="Tags"
+                                onChange={(e) => setTag(e.target.value)}
+                            >
+                                <option>Tags</option>T
+                                {tags.map((tag) => (
+                                    <option key={tag.id}>{tag.name}</option>
+                                ))}
+                            </Form.Select>
                             <Form.Control
                                 className="my-3"
                                 as="textarea"
                                 rows={5}
                                 placeholder="Notes"
+                                onChange={(e) => setNote(e.target.value)}
                             ></Form.Control>
                         </Form>
                     </Col>
