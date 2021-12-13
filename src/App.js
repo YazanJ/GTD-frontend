@@ -10,46 +10,47 @@ const App = () => {
     const [actions, setActions] = useState([]);
     const [projects, setProjects] = useState([]);
     const [tags, setTags] = useState([]);
-    const [errorMessage, setErrorMessage] = useState("");
     const [newItem, setNewItem] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         getActions()
             .then((data) => {
-                // console.log("DATA", data);
                 setActions(data);
             })
             .catch((error) => {
-                console.log("ERROR", error);
+                setErrorMessage(error.message);
             });
-        // getActions().then(successCallback, failureCallback);
 
         getProjects()
             .then((data) => {
-                // console.log(data);
                 setProjects(data);
             })
             .catch((error) => {
-                console.log(error);
+                setErrorMessage(error.message);
             });
 
-        getTags().then((data) => {
-            setTags(data);
-        });
+        getTags()
+            .then((data) => {
+                setTags(data);
+            })
+            .catch((error) => {
+                setErrorMessage(error.message);
+            });
     }, []);
 
     return (
         <Router>
             <Header setNewItem={setNewItem} />
             <Row>
-                <Col md={3}>
+                <Col sm={5} md={3}>
                     <Sidebar
                         className="min-vh-100"
-                        projects={projects}
-                        tags={tags}
+                        projects={errorMessage.length ? [] : projects}
+                        tags={errorMessage.length ? [] : tags}
                     ></Sidebar>
                 </Col>
-                <Col md={9}>
+                <Col sm={7} md={9}>
                     <main className="py-1">
                         {errorMessage.length ? (
                             <div>{errorMessage}</div>
@@ -57,6 +58,7 @@ const App = () => {
                             <MainScreen
                                 actions={actions}
                                 projects={projects}
+                                tags={tags}
                                 newItem={newItem}
                                 setNewItem={setNewItem}
                             />

@@ -7,7 +7,7 @@ export const getActions = async () => {
         const { data } = await axios.get(`${HOSTNAME}/api/users/actions/`);
         return data;
     } catch (error) {
-        return error.message;
+        throw new Error(error.message);
     }
 };
 
@@ -17,15 +17,16 @@ export const getProjects = async () => {
         const { data } = await axios.get(`${HOSTNAME}/api/users/projects/`);
         return data;
     } catch (error) {
-        return error.message;
+        throw new Error(error.message);
     }
 };
 
+// get all tags from db
 export const getTags = async () => {
     try {
         const { data } = await axios.get(`${HOSTNAME}/api/users/tags/`);
         return data;
     } catch (error) {
-        return error.message;
+        throw new Error(error.message);
     }
 };
