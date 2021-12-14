@@ -30,3 +30,12 @@ export const getTags = async () => {
         throw new Error(error.message);
     }
 };
+
+export const createAction = async (data) => {
+    try {
+        const res = await axios.post(`${HOSTNAME}/api/users/actions/`, data);
+        return res;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
