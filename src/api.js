@@ -1,6 +1,15 @@
 import axios from "axios";
 const HOSTNAME = "http://127.0.0.1:3000";
 
+export const getStateChoices = async () => {
+    try {
+        const { data } = await axios.get(`${HOSTNAME}/api/state_choices/`);
+        return data;
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
 // get all actions from db
 export const getActions = async () => {
     try {
